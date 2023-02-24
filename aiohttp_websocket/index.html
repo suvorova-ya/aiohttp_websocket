@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News</title>
+</head>
+<body>
+    <h1>News</h1>
+    <ul id="news-list"></ul>
+    <script>
+        const newsList = document.getElementById('news-list');
+        const socket = new WebSocket('ws://' + window.location.host + '/ws');
+        socket.onmessage = function(event) {
+            const li = document.createElement('li');
+            li.textContent = event.data;
+            newsList.appendChild(li);
+        };
+    </script>
+</body>
+</html>
+
